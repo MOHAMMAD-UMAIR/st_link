@@ -57,15 +57,15 @@ def show_selenium_log(logpath):
 def run_selenium(logpath):
     name = str()
     with webdriver.Chrome(options=get_webdriver_options(), service=get_webdriver_service(logpath=logpath)) as driver:
-        url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
+        url = "https://www.linkedin.com/login"
         driver.get(url)
         st.write("Link opened")
-        xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
+        
+        xpath = '//*[@id="username"]'
         # Wait for the element to be rendered:
-        element = WebDriverWait(driver, 10).text
-        st.write(element)
-        # .until(lambda x: x.find_elements(by=By.XPATH, value=xpath))
-        # name = element[0].get_property('attributes')[0]['name']
+        element = WebDriverWait(driver, 10).until(lambda x: x.find_element(by=By.XPATH, value=xpath))
+        name=element.text
+        #name = element[0].get_property('attributes')[0]['name']
     return name
 
 
