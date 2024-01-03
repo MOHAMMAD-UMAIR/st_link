@@ -59,6 +59,7 @@ def run_selenium(logpath):
     with webdriver.Chrome(options=get_webdriver_options(), service=get_webdriver_service(logpath=logpath)) as driver:
         url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
         driver.get(url)
+        st.write("Link opened")
         xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
         # Wait for the element to be rendered:
         element = WebDriverWait(driver, 10).until(lambda x: x.find_elements(by=By.XPATH, value=xpath))
