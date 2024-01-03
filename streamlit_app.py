@@ -61,7 +61,9 @@ def run_selenium(logpath):
         driver.get(url)
         st.write("Link opened")
         
-        xpath = '//*[@id="username"]'
+        #//*[@id="username"]
+        xpath = '//*[@id="organic-div"]/form/div[1]/label'
+        
         # Wait for the element to be rendered:
         element = WebDriverWait(driver, 10).until(lambda x: x.find_element(by=By.XPATH, value=xpath))
         name=element.text
